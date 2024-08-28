@@ -117,7 +117,7 @@
 ;;    f: the function to find the fixpoint of
 ;;    initial-guess: a floating point number to start at
 ;;    close-enough?: a predicate function
-;;    precision: a floating point number to round to
+;;    decimal-places: number of decimal places to round to
 ;;
 ;; Your solution should repeatedly apply f until:
 ;;    (close-enough? (f next-guess) previous-guess)
@@ -131,7 +131,7 @@
 ;;     repeat (
 ;;         next-guess <- f(previous-guess)
 ;;         if close-enough?(next-guess, previous-guess) (
-;;             return round-to-precision(next-guess, precision)
+;;             return round-to-precision(next-guess, decimal-places)
 ;;         )
 ;;         previous-guess <- next-value
 ;;     )
@@ -140,11 +140,13 @@
 ;; Note that there are inputs which may make this function diverge.
 ;;
 ;; Examples:
-;;    (find-fixpoint (lambda (x) (* x x)) 0.9 (lambda (a b) (< (abs (- a b)) 0.0001)) 0.01)
+;;    (find-fixpoint (lambda (x) (* x x)) 0.9 (lambda (a b) (< (abs (- a b)) 0.0001)) 1)
 ;;      => 0.0
-;;    (find-fixpoint (lambda (x) x) 10.0 (lambda (a b) (= a b)) 0.1)
+;;    (find-fixpoint (lambda (x) x) 10.0 (lambda (a b) (= a b)) 1)
 ;;      => 10.0
-;;    (find-fixpoint #'cos 1.0 (lambda (a b) (< (abs (- a b)) 0.001)) 0.001)
+;;    (find-fixpoint #'cos 1.0 (lambda (a b) (< (abs (- a b)) 0.001)) 3)
 ;;      => 0.739 
+;;    (find-fixpoint (lambda (x) (+ (* 0.5 x) (* 0.5 (exp (- x))))) 1.0 (lambda (a b) (< (abs (- a b)) 0.000001)) 6)
+;;      => 0.567143
 (defun find-fixpoint (f initial-guess close-enough? precision)
   (TODO 'find-fixpoint))
