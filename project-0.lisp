@@ -102,3 +102,49 @@
 ;;     (merge-sort '(2 1 5 0) #'<) => '(0 1 2 5)
 (defun merge-sort (list predicate)
   (TODO 'merge-sort))
+
+;; In mathematics, the fixpoint of a function f is where:
+;;    f(y) = y
+;; That is, where the output equals the input
+;;
+;; A function may have zero or more fixpoints. For example,
+;;    f(x) = x^2
+;; has fixpoints:
+;;    f(0) = 0
+;;    f(1) = 1
+;;
+;; Parameters:
+;;    f: the function to find the fixpoint of
+;;    initial-guess: a floating point number to start at
+;;    close-enough?: a predicate function
+;;    precision: a floating point number to round to
+;;
+;; Your solution should repeatedly apply f until:
+;;    (close-enough? (f next-guess) previous-guess)
+;;      returns true 
+;;
+;; And then round the answer to the specified precision
+;;
+;; In pseudocode, this looks like this:
+;; procedure find-fixpoint(f, initial-guess, close-enough?, precision) (
+;;     previous-guess = initial-guess
+;;     repeat (
+;;         next-guess <- f(previous-guess)
+;;         if close-enough?(next-guess, previous-guess) (
+;;             return round-to-precision(next-guess, precision)
+;;         )
+;;         previous-guess <- next-value
+;;     )
+;; )
+;;
+;; Note that there are inputs which may make this function diverge.
+;;
+;; Examples:
+;;    (find-fixpoint (lambda (x) (* x x)) 0.9 (lambda (a b) (< (abs (- a b)) 0.0001)) 0.01)
+;;      => 0.0
+;;    (find-fixpoint (lambda (x) x) 10.0 (lambda (a b) (= a b)) 0.1)
+;;      => 10.0
+;;    (find-fixpoint #'cos 1.0 (lambda (a b) (< (abs (- a b)) 0.001)) 0.001)
+;;      => 0.739 
+(defun find-fixpoint (f initial-guess close-enough? precision)
+  (TODO 'find-fixpoint))
