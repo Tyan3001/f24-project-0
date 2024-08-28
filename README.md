@@ -35,8 +35,6 @@ For example, the following solution to merge sort is unacceptable and would rece
 If you are even remotely concerned whether you are in violation of this rule, ask on Ed. 
 * Zeros will be given for *all* functions which violate this rule, with no second chances given.
 
-
-
 ## Submission
 
 ### Code
