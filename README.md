@@ -40,16 +40,16 @@ If you are even remotely concerned whether you are in violation of this rule, as
 ## Submission
 
 ### Code
-Submit `project-0.lisp` (and *only* that file) to [Project 0 - Code]() on Gradescope before the due date.
+Submit `project-0.lisp` (and *only* that file) to [Project 0 - Code](https://www.gradescope.com/courses/814289/assignments/4839799) on Gradescope before the due date.
 
 * Make sure to add your teammates to the submission.
 
 Keep the same function names as given in the starter code. The grading scripts test your code based on these function names, and if you change them, your code will not pass the tests.
 
 ### Report
-Submit `project-0-report.pdf` to [Project 0 - Report]() on Gradescope before the due date.
+Submit `project-0-report.pdf` to [Project 0 - Report](https://www.gradescope.com/courses/814289/assignments/4839850) on Gradescope before the due date.
 
-Make sure to add your teammates to the submission.
+* Make sure to add your teammates to the submission.
 
 ### Grading
 
