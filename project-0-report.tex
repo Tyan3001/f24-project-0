@@ -26,25 +26,25 @@
   \item What are the types of the following Lisp expressions?
   \begin{enumerate}
     \item {\tt 1} : \emph{
-      % Your Answer Here
+      An integer Literal.
     }
     \item {\tt (+ 1 2)} : \emph{
-      % Your Answer Here
+      An s-expression that evaluates to an integer (3) because it adds two integers.
     }
     \item {\tt '(+ 1 2)} : \emph{
-      % Your Answer Here
+      A quoted list with three elements that doesn't evaluate.
     }
     \item {\tt (eval '(+ 1 2))} : \emph{
-      % Your Answer Here
+      An s-expression that evaluates to integer (3) because it's evaluating a quoted list with three elements.
     }
     \item {\tt (lambda () (+ 1 2))} : \emph{
-      % Your Answer Here
+      An anonymous function that adds two integers.
     }
     \item {\tt "foo"} : \emph{
-      % Your Answer Here
+      A string literal.
     }
     \item {\tt 'bar} : \emph{
-      % Your Answer Here
+      A quoted symbol bar.
     }
   \end{enumerate}
 
@@ -70,13 +70,13 @@
     \item Contrast the representations of Lisp code and Python code.
 
     \begin{emph}
-      Answer: % Your Answer Here
+      Answer: Lisp represents code as lists, allowing it to treat code as data, while Python represents code as text that needs to be parsed before execution.
     \end{emph}
 
     \item How does Python's {\tt eval()} differ from the approach of Lisp?
 
     \begin{emph}
-      Answer: % Your Answer Here
+      Answer:  Python’s {\tt eval()} evaluates a string of code and it requires parsing, whereas Lisp can directly evaluate lists, since its code is inherently structured as data.
     \end{emph}
   \end{enumerate}
 
