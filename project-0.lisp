@@ -9,7 +9,10 @@
 ;;  (set-member '(1 2) 1) => T
 ;;  (set-member '(1 2) 3) =>  NIL
 (defun set-member (set item)
-  (TODO 'set-member))
+  (cond
+    ((null set) nil)
+    ((equal (car set) item) t)
+    (t (set-member (cdr set) item))))
 
 ;; Return the union of set-1 and set-2.
 ;; The result should contain no duplicates.
@@ -18,7 +21,15 @@
 ;; Examples:
 ;;   (set-union '(1 2) '(2 4)) => '(1 2 4)
 (defun set-union (set-1 set-2)
-  (TODO 'set-union))
+  (labels ((helper (set-1 set-2 res)
+                  (cond
+                   ((null set-1) (append res set-2))
+                   ((set-member set-2 (car set-1)) (helper (cdr set-1) set-2 res))
+                   (t (helper (cdr set-1) set-2 (cons (car set-1) res)))
+                  )
+    ))
+  (helper set-1 set-2 '()))
+)
 
 ;; Return the intersection of set-1 and set-2.
 ;; The result should contain no duplicates.
@@ -27,7 +38,15 @@
 ;; Examples:
 ;;   (set-intersection '(1 2) '(2 4)) => '(2)
 (defun set-intersection (set-1 set-2)
-  (TODO 'set-intersection))
+  (labels ((helper (set-1 set-2 res)
+                   (cond
+                    ((null set-1) res)
+                    ((set-member set-2 (car set-1)) (helper (cdr set-1) set-2 (cons (car set-1) res)))
+                    (t (helper (cdr set-1) set-2 res))
+                    )
+                   ))
+  (helper set-1 set-2 '())
+  ))
 
 ;; Return the difference of set-1 and set-2.
 ;; The result should contain no duplicates.
@@ -36,7 +55,14 @@
 ;; Examples:
 ;;   (set-diff '(1 2) '(2 4)) => '(1)
 (defun set-diff (set-1 set-2)
-  (TODO 'set-diff))
+  (labels ((helper (set-1 set-2 res)
+                   (cond
+                    ((null set-1) res)
+                    ((set-member set-2 (car set-1)) (helper (cdr set-1) set-2 res))
+                    (t (helper (cdr set-1) set-2 (cons (car set-1) res)))
+                  )))
+    (helper set-1 set-2 '())
+  ))
 
 ;; Return the exclusive or of a and b
 ;;
@@ -44,7 +70,9 @@
 ;;  (boolean-xor t nil) => t
 ;;  (boolean-xor nil nil) => nil
 (defun boolean-xor (a b)
-  (TODO 'boolean-xor))
+  (cond 
+   ((equal a b) nil)
+   (t t)))
 
 ;; Return the implication of a and b
 ;;
@@ -52,7 +80,7 @@
 ;;  (boolean-implies t nil) => nil
 ;;  (boolean-implies nil nil) => t
 (defun boolean-implies (a b)
-  (TODO 'boolean-implies))
+  (or (not a) b))
 
 ;; Return the bi-implication (if and only if) of a and b
 ;;
@@ -60,7 +88,7 @@
 ;;  (boolean-iff t nil) => nil
 ;;  (boolean-iff nil nil) => t
 (defun boolean-iff (a b)
-  (TODO 'boolean-iff))
+  (equal a b))
 
 ;; Evaluate a boolean expression.
 ;; Handle NOT, AND, OR, XOR, IMPLIES, and IFF.
@@ -71,9 +99,19 @@
 (defun boolean-eval (exp)
   (cond
     ((equal t exp) t)
+    ((equal nil exp) nil)
     ((equal 'not (car exp))
-     (TODO 'boolean-eval-not))
-    ;; TODO: Handle other possible cases
+     (not (boolean-eval (second exp))))
+    ((equal 'and (car exp))
+     (and (boolean-eval (second exp)) (boolean-eval (third exp))))
+    ((equal 'or (car exp))
+     (or (boolean-eval (second exp)) (boolean-eval (third exp))))
+    ((equal 'xor (car exp))
+     (boolean-xor (boolean-eval (second exp)) (boolean-eval (third exp))))
+    ((equal 'implies (car exp))
+     (boolean-implies (boolean-eval (second exp)) (boolean-eval (third exp))))
+    ((equal 'iff (car exp))
+     (boolean-iff (boolean-eval (second exp)) (boolean-eval (third exp))))
     (t
      (TODO 'boolean-eval))))
 
