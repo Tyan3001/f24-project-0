@@ -89,3 +89,11 @@
 (format t "Test 8 (boolean-eval '(iff t t)): ~a~%" (boolean-eval '(iff t t))) ;; Expected: T
 (format t "Test 9 (boolean-eval '(not t)): ~a~%" (boolean-eval '(not t))) ;; Expected: NIL
 (format t "Test 10 (boolean-eval '(not nil)): ~a~%" (boolean-eval '(not nil))) ;; Expected: T
+
+;; Test cases for merge-sort
+(assert (equal (merge-sort '(2 1 5 0) #'<) '(0 1 2 5)))
+(assert (equal (merge-sort '(2 1 5 0) #'>) '(5 2 1 0)))
+(assert (equal (merge-sort '(2 1 5) #'<) '(1 2 5)))
+(assert (equal (merge-sort '(2) #'<) '(2)))
+(assert (equal (merge-sort '() #'<) nil))
+(assert (equal (merge-sort nil #'<) nil))
