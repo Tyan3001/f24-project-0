@@ -139,7 +139,42 @@
 ;; Examples:
 ;;     (merge-sort '(2 1 5 0) #'<) => '(0 1 2 5)
 (defun merge-sort (list predicate)
-  (TODO 'merge-sort))
+    (labels 
+        (
+            (split-list (list left right)
+				(case list
+					((nil) `(,left ,right))
+					(t (split-list (cdr list) right (cons (car list) left)))
+				)
+			)
+            (merge-sort-helper (list1 list2 predicate)
+				(cond
+					((and list1 list2) 
+						(if (funcall predicate (car list1) (car list2))
+							(cons (car list1) (merge-sort-helper (cdr list1) list2 predicate))
+							(cons (car list2) (merge-sort-helper list1 (cdr list2) predicate))
+						)
+					)
+					(list1
+						(cons (car list1) (merge-sort-helper (cdr list1) list2 predicate))
+					)
+					(list2
+						(cons (car list2) (merge-sort-helper list1 (cdr list2) predicate))
+					)
+					(t nil)
+				)
+			)
+		)
+	(if list
+		(if (cdr list) 
+			(let ((split (split-list list nil nil)))
+				(merge-sort-helper (merge-sort (first split) predicate) (merge-sort (second split) predicate) predicate)
+			)
+			list
+		)
+        nil
+	))
+)
 
 ;; In mathematics, the fixpoint of a function f is where:
 ;;    f(y) = y
