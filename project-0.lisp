@@ -113,9 +113,7 @@
     ((equal 'implies (car exp))
      (boolean-implies (boolean-eval (second exp)) (boolean-eval (third exp))))
     ((equal 'iff (car exp))
-     (boolean-iff (boolean-eval (second exp)) (boolean-eval (third exp))))
-    (t
-     (TODO 'boolean-eval))))
+     (boolean-iff (boolean-eval (second exp)) (boolean-eval (third exp))))))
 
 
 ;; Perform the left fold on the list
