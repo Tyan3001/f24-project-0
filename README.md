@@ -1,3 +1,5 @@
+## 2pm meeting link: https://meet.google.com/gab-kgwn-cwi
+
 # CSCI 561: Project 0
 
 The purpose of the project is to familiarize you with functional programming and the Common Lisp development environment.
