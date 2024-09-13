@@ -123,7 +123,9 @@
 ;; Examples:
 ;;   (fold-left #'- 1 '(2 3)) => -4
 (defun fold-left (function initial-value list)
-  (TODO 'fold-left))
+  (if (null list)
+       initial-value
+       (fold-left function (funcall function initial-value (first list)) (rest list))))
 
 
 ;; Perform the right fold on the list
@@ -131,7 +133,9 @@
 ;; Examples:
 ;;   (fold-right #'- 1 '(2 3)) => 0
 (defun fold-right (function initial-value list)
-  (TODO 'fold-right))
+  (if (null list)
+       initial-value
+       (funcall function (first list) (fold-right function initial-value (rest list)))))
 
 ;; Perform merge sort on the lists.
 ;;

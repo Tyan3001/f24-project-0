@@ -55,14 +55,14 @@
     \item What is tail recursion?
 
     \begin{emph}
-      Answer: % Your Answer Here
+      Answer: Tail recursion occurs when the final action of a function is a recursion call. This allows the compiler to not add a new stack frame to the call stack (if the compiler is capable), basically allowing the new stack to replace the old one.
     \end{emph}
 
     \item In the recursive implementation, will {\tt fold-left} or
     {\tt fold-right} be more memory-efficient?  Why?
 
     \begin{emph}
-      Answer: % Your Answer Here
+      Answer: Fold-left will be more memory efficient. Fold-left can utilize tail recursion since its last action is the recursive call of itself, unlike fold-right which calls the recursion before evaluating the return value.
     \end{emph}
   \end{enumerate}
 
