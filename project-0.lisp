@@ -74,6 +74,8 @@
    ((equal a b) nil)
    (t t)))
 
+
+
 ;; Return the implication of a and b
 ;;
 ;; Examples:
@@ -114,6 +116,7 @@
      (boolean-iff (boolean-eval (second exp)) (boolean-eval (third exp))))
     (t
      (TODO 'boolean-eval))))
+
 
 ;; Perform the left fold on the list
 ;;
@@ -221,5 +224,20 @@
 ;;      => 0.739 
 ;;    (find-fixpoint (lambda (x) (+ (* 0.5 x) (* 0.5 (exp (- x))))) 1.0 (lambda (a b) (< (abs (- a b)) 0.000001)) 6)
 ;;      => 0.567143
+
+;; helper function to round to a certain precision
+(defun round-to-precision (number precision)
+  (let ((factor (expt 10 precision)))
+    (/ (float (round (* number factor))) factor)))
+
+
 (defun find-fixpoint (f initial-guess close-enough? precision)
-  (TODO 'find-fixpoint))
+  (let ((next-guess (funcall f initial-guess)))
+  (cond 
+  ((funcall close-enough? next-guess initial-guess)
+  (round-to-precision next-guess precision))
+  ((find-fixpoint f next-guess close-enough? precision)))))
+
+; (print (find-fixpoint (lambda (x) (- x (/ (- (* x x) 2) (* x 2)))) -1.0 (lambda (a b) (< (abs (- a b)) 0.0001)) 3))
+; (print (find-fixpoint (lambda (x) (- x (/ (- (- (* x (* x x)) x) 2) (- (* (* x x) 3) 1)))) 1.0 (lambda (a b) (< (abs (- a b)) 0.0001)) 3))
+; (print (find-fixpoint (lambda (x) (- x (/ (- (+ (- (* x (* x x)) (* (* x x) 6)) (* x 11)) 6) (+ (- (* (* x x) 3) (* x 12)) 11)))) 2.6 (lambda (a b) (< (abs (- a b)) 0.0001)) 3))

@@ -126,7 +126,7 @@
 
     \end{enumerate}
 
-  \item Newton's method is a powerful technique for finding roots of real-valued functions. Given a function \( p(x) \), Newton's method iteratively computes the next approximation \( x_{n+1} \) of the root using its derivative, \( p'(x) \), as follows:
+    \item Newton's method is a powerful technique for finding roots of real-valued functions. Given a function \( p(x) \), Newton's method iteratively computes the next approximation \( x_{n+1} \) of the root using its derivative, \( p'(x) \), as follows:
 
     \[
     x_{n+1} = x_n - \frac{p(x_n)}{p'(x_n)}
@@ -139,7 +139,11 @@
     Given a polynomial \( p(x) \) and its derivative \( p'(x) \), determine the function \( f(x) \) that should be used in the {\tt find-fixpoint} function. Write down the expression for \( f(x) \).
 
     \begin{emph}
-      Answer: % Derive and write \( f(x) \) here.
+      Answer:
+      \\ Our {\tt find-fixpoint} function does not have any specific functionality that would prevent it from finding roots if the correct input function was given, thus we need only replace \(f(x) \) with the iterative Newton's expression to find the roots using our function. This means that our function is:
+      \[
+    f(x) = x - \frac{p(x_n)}{p'(x_n)}
+    \]
     \end{emph}
 
     \item Implement and Test:
@@ -155,7 +159,19 @@
 
     \begin{emph}
       Answer: % Implement and test, then report the results here.
-    \end{emph}
+      \\For \( p(x) = x^2 - 2 \) our function must be: \[
+    f(x) = x - \frac{x^2-2}{2x}.
+    \]
+    \\ We set our initial value as 1.0 to find our positive root and -1.0 to find our negative root. After implementing {\tt find-fixpoint}, we found that the roots were 1.414 and -1.414, respectively.
+    \\For \( p(x) = x^3 - x - 2 \), ur function must be: \[
+    f(x) = x - \frac{x^3 - x - 2}{3x^2 - 1}.
+    \]
+  \\ Since there is only one root, we set our initial value as 1.0 to find the root. After implementing {\tt find-fixpoint}, we found the root to be 1.521.
+  \\For \( p(x) = x^3 - 6x^2 + 11x - 6 \), our function must be: \[
+    f(x) = x - \frac{x^3 - 6x^2 + 11x -6}{3x^2-12x+11}.
+    \]
+  \\ Since there were three roots, we set our initial values to 0.6, 1.6, and 2.6 to make sure we captured all three roots. After implementing {\tt find-fixpoint} we found the roots to be 1, 2, and 3 respectively.
+  \end{emph}
 
   \end{enumerate}
 
