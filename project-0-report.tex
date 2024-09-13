@@ -23,6 +23,8 @@
   this project.  (\emph{Hint: The correct answer is ALIVE, SLIME, or
     similar.})
 
+    ALIVE
+
   \item What are the types of the following Lisp expressions?
   \begin{enumerate}
     \item {\tt 1} : \emph{
@@ -121,7 +123,7 @@
     what running time did you observe?  Explain any differences.
 
     \begin{emph}
-      Answer: I expected O(nlogn) time for merge-sort because merge sort takes O(nlogn) time and at no point in my implementation did I use methods with a slower asymptotic time complexity than assumed (such as by splitting a list in O($n^2$) time rather than O(n)). I expected O(nlogn) time for sort because it is a generic sorting algorithm and provided that nothing is known about the list being sorted, O(nlogn) is the best asymptotic running time any existing sorting algorithm can achieve. Both of these hypotheses correlated with the results as shown in the second graph in the previous answer by how dividing the number of cycles by the list size times the log of the list size and plotting that vs the list size creates a roughly horizontal line.
+      Answer: I expected O(nlogn) time for merge-sort because merge sort takes O(nlogn) time and at no point in my implementation did I use methods with a slower asymptotic time complexity than assumed (such as by splitting a list in O($n^2$) time rather than O(n)). I expected O(nlogn) time for sort because it is a generic sorting algorithm and provided that nothing is known about the list being sorted, O(nlogn) is the best asymptotic running time any existing sorting algorithm can achieve. Both of these hypotheses correlated with the results as shown in the second graph in the previous answer by how dividing the number of cycles by the list size times the log of the list size and plotting that vs the list size creates roughly horizontal lines.
     \end{emph}
 
     \end{enumerate}
